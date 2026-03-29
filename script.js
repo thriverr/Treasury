@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
         form
       )
       .then(() => {
-        alert("Message sent successfully!");
+        alert("Submitted successfully!");
         form.reset();
 
         if (modal && modal.style.display === "flex") {

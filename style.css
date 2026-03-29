@@ -1,4 +1,19 @@
-* {
+img, video {
+  max-width: 100%;
+  height: auto;
+}
+
+section {
+  width: 100%;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 20px;
+}
+* 
+{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -8,6 +23,7 @@
 body {
     background: #fefefe;
     color: #333;
+    height: 100%;
 }
 
 .headline {
@@ -19,125 +35,164 @@ body {
 
 /* Navbar */
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 2rem;
-    background:  #23795a;
-    position: sticky;
-    top: 0;
-    z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: #23795a;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
+  flex-wrap: wrap; /* allows wrapping on smaller screens */
+  gap: 10px;
 }
 
+/* Logo */
 .logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 22px;
-    font-weight: 700;
-    color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 22px;
+  font-weight: 700;
+  color: #fff;
 }
 
-
-/* Logo image size */
+/* Logo image */
 .logo img {
-    width: 50px;
-    height: 50px;
-    object-fit: contain;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  border: 2px solid #5D4037;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-
-/* Pop-up on hover */
 .logo img:hover {
-    transform: scale(1.8);
-    box-shadow: 0 6px 15px rgba(255, 111, 145, 0.4);
+  transform: scale(1.8);
+  box-shadow: 0 6px 15px rgba(255, 111, 145, 0.4);
 }
 
+/* Nav links */
 .nav-links {
-    list-style: none;
-    display: flex;
-    gap: 1.5rem;
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap; /* links wrap automatically on small screens */
+  justify-content: flex-end;
 }
 
+/* Links */
 .nav-links a {
-    text-decoration: none;
-    color: #fff;
-    font-weight: 500;
-    font-size: 17px;
-    margin-top: 10px;
+  text-decoration: none;
+  color: #fff;
+  font-weight: 500;
+  font-size: clamp(14px, 1.2vw, 17px); /* auto scale text */
+  margin-top: 10px;
+}
+/* Hero Section */
+.hero {
+  display: flex;
+  flex-wrap: wrap;            /* Allows items to move to the next line automatically */
+  align-items: center;
+  justify-content: center;
+  gap: clamp(2rem, 5vw, 4rem);                /* Consistent spacing between text and image/video */
+  padding: clamp(3rem, 8vw, 3rem) clamp(2rem, 10vw, 4rem); /* Padding shrinks as the screen gets smaller */
+  background: #FFF9F7;
+  min-height: 80vh;           /* Ensures it fills most of the screen height */
 }
 
-/* Hero */
-.hero {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    padding: 6rem 2rem;
-    background:#FFF9F7;
+.hero-text {
+  flex: 1 1 450px;            /* Grow, shrink, and "break" to a new line at 450px */
+  max-width: 600px;
 }
 
 .hero-text h1 {
-    font-size: 3rem;
-    color: #55B6DA;
+  /* Font size stays between 2rem and 3rem based on screen width */
+  font-size: clamp(2rem, 5vw, 3rem); 
+  color: #55B6DA;
+  line-height: 1.4;
+  margin-bottom: 0.7rem;
 }
 
 .hero-text p {
-    color: #57371a
+  color: #57371a;
+  font-size: clamp(1.3rem, 1.2vw, 1.1rem);
 }
 
+/* Image inside hero-text */
 .hero-text img {
-    width: 250px;
-    height: 200px;
-    border-radius: 60px;
-    margin-left: 50px;
+  width: min(250px, 100%);     /* Never wider than 250px, but 100% on small screens */
+  height: auto;
+  border-radius: 50%;
+  border: 5px solid #5D4037; /* A nice deep earthy brown */
+  margin-top: 20px;
+  margin-left: 30px;
+  transition: all 0.3s ease;
 }
+
 .hero-text img:hover {
-    transform: scale(1.2);
-    box-shadow: 0 6px 15px rgba(127, 43, 183, 0.4);
+  transform: scale(1.1);
+  box-shadow: 0 6px 15px rgba(127, 43, 183, 0.4);
 }
+
+/* Video Section */
+.hero-image {
+  flex: 1 1 500px;            /* Standardize the space the video takes */
+  display: flex;
+  justify-content: center;
+}
+
 .hero-image video {
-    width: 600px;
-    height: auto;
-    border-radius: 60px;
+  width: 100%;                /* Fill the container */
+  max-width: 600px;           /* But don't exceed your original size */
+  height: auto;
+  border-radius: clamp(20px, 5vw, 60px); /* Rounding softens on mobile */
 }
+
+/* Button */
 .primary-btn {
-    font-weight: 700;           /* makes text bold */
-    padding: 14px 40px;         /* increases width & height */
-    font-size: 16px;
-    border-radius: 30px;
-    background-color: #f85e82;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    width: 10rem;
-    margin-top: 20px;
+  display: inline-block;
+  font-weight: 700;
+  padding: 14px 40px;
+  font-size: 16px;
+  border-radius: 30px;
+  background-color: #f85e82;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  text-align: center;
 }
 
-/* Optional hover effect */
 .primary-btn:hover {
-    background-color: #db5575;
-    transform: translateY(-2px);
+  background-color: #db5575;
+  transform: translateY(-2px);
 }
-
 
 /* Sections */
 .section {
-    padding: 4rem 2rem;
-    text-align: center;
-    background: #FFF9F7;
+  /* Padding grows from 3rem on mobile to 6rem on desktop */
+  padding: clamp(3rem, 8vw, 6rem) 2rem; 
+  text-align: center;
+  background: #FFF9F7;
 }
 
 .section h2 {
-    font-size: 36px;
-    margin-bottom: 0.5rem;
-    margin-top: 2rem;
+  /* Font size scales from 24px (1.5rem) to 36px (2.25rem) */
+  font-size: clamp(1.5rem, 4vw, 2.25rem); 
+  margin-bottom: 0.5rem;
+  margin-top: 2rem;
+  line-height: 1.2;
 }
 
 .section-text {
-    max-width: 700px;
-    margin: auto ;
-    margin-top: 2rem;
+  /* max-width prevents text lines from getting too long to read on desktop */
+  max-width: 700px;
+  /* width: 90% ensures it doesn't touch the edges on tiny screens */
+  width: 90%; 
+  margin: 2rem auto 0 auto;
+  font-size: clamp(1rem, 1.1vw, 1.125rem);
+  line-height: 1.6;
 }
 
 .pastel-bg {
@@ -148,510 +203,573 @@ body {
     background: #8cd0f5;
 }
 
-/* Cards */
+/* Card Container */
 .card-container {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    margin-top: 2rem;
+  display: flex;
+  flex-wrap: wrap;           /* Allows cards to move to the next line */
+  justify-content: center;   /* Keeps cards centered as they wrap */
+  gap: 2rem;
+  margin-top: 2rem;
+  padding: 0 1rem;           /* Prevents cards from touching screen edges */
 }
 
+/* Individual Card */
 .card {
-    background: #87c69d;
-    padding: 2rem;
-    border-radius: 20px;
-    width: 300px;
+  background: #87c69d;
+  padding: 2rem;
+  border-radius: 20px;
+  
+  /* This is the key: */
+  flex: 1 1 300px;           /* Grow to fill space, shrink if needed, base size 300px */
+  max-width: 350px;          /* Prevents a single card from becoming too wide on mobile */
+  
+  transition: transform 0.3s ease;
 }
 
 .card.pink {
-    background: #f09cbc;
+  background: #f09cbc;
+}
+
+/* Subtle hover effect for better UI */
+.card:hover {
+  transform: translateY(-5px);
 }
 
 /* Activities */
 /* Activities Section */
 .activities-section{
-    position: relative; 
-    overflow: hidden;
-    background: linear-gradient(135deg, #90d5ee, #5cc3f5, #498ad4, #55bbee);
-
-
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #90d5ee, #5cc3f5, #498ad4, #55bbee);
+  padding: clamp(40px, 6vw, 80px) 20px;
 }
+
+/* Sun Sticker */
 .sticker-sun {
-    position: absolute;
-    width: 250px; /* adjust size as needed */
-    height:200px;
-    z-index: 1;
-    pointer-events: none; /* so stickers don’t block text */
-    transform-origin: center;
-    transition: transform 0.3s ease; /* optional for hover effects */
-    left:150px;
-    top:45px;
-    transform: rotate(-3deg);
-  }
+  position: absolute;
+  width: clamp(120px, 18vw, 190px);
+  height: auto;
+  z-index: 1;
+  pointer-events: none;
+  transform-origin: center;
+  transition: transform 0.3s ease;
+  left: clamp(60px, 12vw, 200px);
+  top: clamp(10px, 5vw, 20px);
+  transform: rotate(-7deg);
+}
+
+/* Subtitle */
 .activities-subtitle {
-    max-width: 600px;
-    margin-top: 1.5rem;
-    margin-left: 26rem;
-    color: #222;
-    font-size: 16px;
-    font-weight: 600;
+  max-width: 600px;
+  margin: 1.5rem auto 0 auto;
+  text-align: center;
+  color: #222;
+  font-size: clamp(14px, 1.2vw, 16px);
+  font-weight: 600;
 }
 
 /* Cards Layout */
 .activities-container {
-    display: flex;
-    justify-content: center;
-    gap: 5rem;
-    flex-wrap: wrap;
-    margin-top: 100px;
-    margin-bottom: 2rem;
+  display: flex;
+  justify-content: center;
+  gap: clamp(1.5rem, 4vw, 5rem);
+  flex-wrap: wrap;
+  margin-top: clamp(50px, 8vw, 100px);
+  margin-bottom: 2rem;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* Activity Card */
 .activity-card {
-    background: #FFD6C9;
-    border-radius: 24px;
-    padding: 1.5rem;
-    width: 390px;
-    box-shadow: 0 12px 25px rgba(0,0,0,0.08);
-    text-align: center;
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  background: #FFD6C9;
+  border-radius: 24px;
+  padding: 1.5rem;
+  width: clamp(280px, 30vw, 390px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.08);
+  text-align: center;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 /* GIF */
 .activity-card img {
-    width: 100%;
-    height: 320px;
-    object-fit: cover;
-    border-radius: 18px;
-    margin-bottom: 1rem;
+  width: 100%;
+  height: clamp(200px, 25vw, 320px);
+  object-fit: cover;
+  border-radius: 18px;
+  margin-bottom: 1rem;
 }
 
-/* Hover Pop */
+/* Hover Effect */
 .activity-card:hover {
-    transform: translateY(-8px) scale(1.03);
-    box-shadow: 0 22px 40px rgba(0,0,0,0.14);
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 22px 40px rgba(0,0,0,0.14);
 }
 
 /* Text */
 .activity-card h3 {
-    margin-bottom: 0.5rem;
-    font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  font-size: clamp(1rem, 1.4vw, 1.2rem);
 }
 
 .activity-card p {
-    font-size: 0.95rem;
-    color: #555;
+  font-size: clamp(0.85rem, 1.2vw, 1rem);
+  color: #555;
 }
-
-/* Mobile */
 @media (max-width: 768px) {
-    .activity-card {
-        width: 100%;
-        max-width: 340px;
-    }
+  .sticker-sun {
+    width:80px;
+    left:-1px;
+    top:-10px;
+    transform: rotate(-12deg);
+  }
 }
-
 
 /* Foundation List Layout */
 .foundation-section {
   background: linear-gradient(135deg, #FFF9F7, #FFEFE8, #FFD7CF, #ffcfc5);
-
-    position: relative; /* important for absolute positioning of stickers */
-    padding: 80px 40px;
-    border-radius: 20px;
-    padding-top: 8rem;
-  }
-.foundation-list {
-    max-width: 800px;
-    margin-top: 4rem;
-    margin-left: 5rem;
-    margin-bottom: 2rem;
-    display: flex;
-    flex-direction: column; /* 🔥 single column */
-    gap: 2rem;              /* space between items */
-    list-style: none;
+  position: relative;
+  padding: clamp(60px, 8vw, 80px) clamp(20px, 6vw, 40px);
+  padding-top: clamp(6rem, 10vw, 8rem);
+  border-radius: 20px;
 }
 
-/* List Item – NO CARD by default */
+/* List container */
+.foundation-list {
+  max-width: 800px;
+  margin-top: clamp(2rem, 4vw, 4rem);
+  margin-left: clamp(1rem, 6vw, 5rem);
+  margin-bottom: 2rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.8rem, 2vw, 1.2rem);
+  list-style: none;
+}
+
+/* List item */
 .foundation-list li {
-    display: flex;
-    gap: 1.2rem;
-    align-items: start;
-    border-radius: 18px;
-    transition: all 0.25s ease;
+  display: flex;
+  gap: clamp(0.8rem, 2vw, 1.2rem);
+  align-items: flex-start;
+  border-radius: 18px;
+  transition: all 0.25s ease;
+  padding: clamp(10px, 1.5vw, 16px);
 }
 
 /* Icon */
 .foundation-list .icon {
-    font-size: 2rem;
+  font-size: clamp(1.6rem, 2vw, 2rem);
 }
 
-/* Text */
+/* Title */
 .foundation-list h4 {
-    margin-bottom: 0.4rem;
-    font-size: 1.1rem;
-    font-weight: 700;
-    text-align: left;
+  margin-bottom: 0.4rem;
+  font-size: clamp(1rem, 1.2vw, 1.1rem);
+  font-weight: 700;
+  text-align: left;
 }
 
+/* Paragraph */
 .foundation-list p {
-    font-size: 0.95rem;
-    color: #555;
-    font-weight: 400;
-    text-align: justify;
+  font-size: clamp(0.95rem, 1.2vw, 0.95rem);
+  color: #383737;
+  font-weight: 500;
+  text-align: left;
 }
 
-/* Hover → Pop-up appears */
+/* Hover effect */
 .foundation-list li:hover {
-    background: #76cea8;
-    transform: translateY(-6px) scale(1.02);
-    box-shadow: 0 18px 35px rgba(0, 0, 0, 0.12);
+  background: #76cea8;
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 18px 35px rgba(0,0,0,0.12);
 }
 
-/* Hover → Bold text */
 .foundation-list li:hover h4,
 .foundation-list li:hover p {
-    font-weight: 600;
+  font-weight: 600;
 }
 
+/* Stickers */
 .sticker {
-    position: absolute;
-    width: 170px; /* adjust size as needed */
-    height:190px;
-    z-index: 1;
-    pointer-events: none; /* so stickers don’t block text */
-    transform-origin: center;
-    transition: transform 0.3s ease; /* optional for hover effects */
-  }
-  
-  .sticker-big {
-    position: absolute;
-    width: 450px; /* adjust size as needed */
-    height:600px;
-    z-index: 1;
-    pointer-events: none; /* so stickers don’t block text */
-    transform-origin: center;
-    transition: transform 0.3s ease; /* optional for hover effects */
-  }
-  /* Top-left sticker */
-  .sticker-top-left {
-    top: 60px;
-    left: 180px;
-    transform: rotate(-7deg);
-  }
-  
-  /* Middle-right sticker (between points 2-3)
-  .sticker-middle-right {
-    top: 200px;
-    right: 100px;
-    transform: rotate(8deg);
-  } */
-  
-  /* Bottom-right sticker */
-  .sticker-bottom-right {
-    bottom: 110px;
-    right: 50px;
-  }
-  
-  /* Responsive adjustments */
-  @media (max-width: 768px) {
-    .sticker {
-      width: 70px;
-    }
-    .sticker-top-left {
-      top: -20px;
-      left: -20px;
-    }
-    .sticker-middle-right {
-      top: 100px;
-      right: -20px;
-    }
-    .sticker-bottom-right {
-      bottom: -20px;
-      right: -20px;
-    }
-  }
-/* Mobile */
-@media (max-width: 768px) {
-    .foundation-list {
-        grid-template-columns: 1fr;
-    }
+  position: absolute;
+  width: clamp(100px, 10vw, 150px);
+  height: auto;
+  z-index: 1;
+  pointer-events: none;
+  transform-origin: center;
+  transition: transform 0.3s ease;
 }
 
+.sticker-big {
+  position: absolute;
+  width: clamp(280px, 30vw, 450px);
+  height: auto;
+  z-index: 1;
+  pointer-events: none;
+  transform-origin: center;
+  transition: transform 0.3s ease;
+}
 
+/* Top-left sticker */
+.sticker-top-left {
+  top: clamp(14px, 4vw, 24px);
+  left: clamp(80px, 14vw, 220px);
+  transform: rotate(-7deg);
+}
 
+/* Bottom-right sticker */
+.sticker-bottom-right {
+  bottom: clamp(60px, 8vw, 110px);
+  right: clamp(20px, 4vw, 50px);
+}
+/* Mobile Adjustments for Foundation Stickers */
+@media (max-width: 768px) {
+  
+  /* Pin small sticker to the absolute top-left */
+  .sticker-top-left {
+    top: 1px;
+    left: 10px;
+    width: 80px; /* Scaling down slightly for mobile */
+    transform: rotate(-10deg);
+  }
+
+  /* Pin big sticker to the absolute bottom-right */
+  .sticker-bottom-right {
+    bottom: -25px;
+    right: -1px;
+    width: 150px; /* Making the 'big' sticker more mobile-friendly */
+    opacity: 0.8; /* Optional: slight transparency so it's less distracting */
+  }
+
+  /* Adjust section padding so text doesn't hit the stickers */
+  .foundation-section {
+    padding-top: 5rem; 
+    padding-bottom: 5rem;
+  }
+
+  /* Ensure the list doesn't get squished by the new sticker positions */
+  .foundation-list {
+    margin-left: 0;
+    padding: 0 10px;
+  }
+}
 
 /* Contact */
-/* Journey Section */
 .journey-section {
-    background:  #FFF9F7;
-    padding: 4rem 2rem;
-    text-align: center;
-    position: relative;
+  background: #FFF9F7;
+  padding: clamp(3rem, 6vw, 4rem) clamp(1rem, 4vw, 2rem);
+  text-align: center;
+  position: relative;
 }
 
-
+/* Subtitle */
 .journey-subtitle {
-    max-width: 650px;
-    margin: 0 auto 3rem;
-    color: #555;
+  max-width: 650px;
+  margin: 0 auto clamp(2rem, 4vw, 3rem);
+  color: #555;
+  font-size: clamp(0.9rem, 1vw, 1rem);
 }
 
 /* Cards Layout */
 .journey-cards {
-    display: flex;
-    justify-content: center;
-    gap: 5rem; /* space between boxes */
-    flex-wrap: wrap;
+  display: flex;
+  justify-content: center;
+  gap: clamp(2rem, 5vw, 5rem);
+  flex-wrap: wrap;
 }
 
 /* Individual Card */
 .journey-card {
   background: linear-gradient(135deg, #f9e4e7, #f6c7d0, #f3a9b7, #f07d9d);
+  border-radius: 24px;
 
-    border-radius: 24px;
-    padding: 2.8rem; /* 🔥 more inner space */
-    width: 550px; /* 🔥 bigger width */
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
-    text-align: left;
+  padding: clamp(1.8rem, 4vw, 2.8rem);
+  width: clamp(300px, 42vw, 550px);
+
+  box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+  text-align: left;
 }
 
 .journey-card h3 {
-    margin-bottom: 2rem;
-    text-align: center;
-    font-size: 24px;
-    color: #333;
+  margin-bottom: clamp(1.2rem, 3vw, 2rem);
+  text-align: center;
+  font-size: clamp(18px, 2vw, 24px);
+  color: #333;
 }
+
+/* Phone Sticker */
 .sticker-phone {
-    position: absolute;
-    z-index: 1;
-    pointer-events: none; /* so stickers don’t block text */
-    transform-origin: center;
-    transition: transform 0.3s ease; /* optional for hover effects */
-    top: 170px;
-    right: 120px;
-    width: 250px; /* adjust size as needed */
-    height:250px;
-  }
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  transform-origin: center;
+  transition: transform 0.3s ease;
+
+  top: clamp(120px, 18vw, 170px);
+  right: clamp(20px, 8vw, 120px);
+
+  width: clamp(140px, 18vw, 250px);
+  height: auto;
+}
 
 /* Form Styling */
 .journey-card form {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.7rem, 2vw, 1rem);
 }
 
 .journey-card input,
 .journey-card textarea {
-    width: 100%;              /* full width */
-    padding: 1.0rem 1.1rem;   /* 🔥 more height */
-    font-size: 1.05rem;       /* bigger text */
-    border-radius: 16px;      /* softer look */
-    border: 1px solid #ddd;
+  width: 100%;
+  padding: clamp(0.7rem, 1.2vw, 1rem);
+  font-size: clamp(0.9rem, 1vw, 1.05rem);
+  border-radius: 16px;
+  border: 1px solid #ddd;
 }
 
 .journey-card textarea {
-    resize: none;
-    height: 100px;
+  resize: none;
+  height: clamp(80px, 10vw, 100px);
 }
 
 /* Details Box */
 .details p {
-    margin-bottom: 1rem;
-    font-size: 0.95rem;
+  margin-bottom: clamp(0.6rem, 1.5vw, 1rem);
+  font-size: clamp(0.85rem, 1vw, 0.95rem);
 }
 
-/* Fake Map */
+/* Map */
 .map-placeholder {
-    background: #eea0c1;
-    height: 240px;
-    border-radius: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.2rem;
-    margin-top: 1rem;
+  background: #eea0c1;
+  height: clamp(160px, 20vw, 240px);
+  border-radius: 15px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: clamp(1rem, 1.2vw, 1.2rem);
+  margin-top: clamp(0.8rem, 2vw, 1rem);
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-    .journey-cards {
-        gap: 2rem;
-    }
-
-    .journey-card {
-        width: 100%;
-        max-width: 360px;
-    }
-}
-
-
-form {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
-
-input, textarea {
-    padding: 0.8rem;
-    border-radius: 10px;
-    border: 1px solid #b6b2b2;
-    width: 250px;
-}
-
+/* Button */
 .primary-btn {
-    background: #f85e82;
-    color: black;
-    border: none;
-    padding: 0.8rem;
-    border-radius: 20px;
-    cursor: pointer;
-    margin-top: 50px;
+  background: #ee6484;
+  color: black;
+  border: none;
+  width: clamp(120px, 30%, 200px); 
+  padding: clamp(0.6rem, 1vw, 0.8rem);
+  border-radius: 20px;
+
+  cursor: pointer;
+  margin-top: clamp(25px, 4vw, 50px);
 }
+
 .primary-btn:hover {
-    background: #4aa664;   /* darker green on hover */
+  background: #4aa664;
 }
+@media (max-width: 768px) {
+  /* 1. Reset the section positioning so the sticker ignores the outer boundaries */
+  .journey-section {
+    position: static; 
+  }
+
+  /* 2. Make the second card the new 'anchor' for the sticker */
+  .journey-cards .journey-card:nth-child(2) {
+    position: relative; /* This is the key! */
+  }
+
+  /* 3. Position the phone sticker inside that second card */
+  .sticker-phone {
+    top: -40px;    /* Floats slightly above the card top */
+    right: -10px;  /* Floats slightly off the right edge */
+    left: auto;    /* Resets any previous left positioning */
+    
+    width: 120px;   /* Smaller size for mobile fit */
+    transform: rotate(10deg);
+    z-index: 10;   /* Ensures it stays on top of the card */
+  }
+}
+/* Footer */
 footer {
-    background: #23795a;
-    padding: 1rem;
-    text-align: center;
+  background: #23795a;
+  padding: clamp(0.8rem, 2vw, 1rem);
+  text-align: center;
 }
 
 /* Programs Section */
 .programs-section {
-    text-align: center;
-    font-size: 1.3rem;
-    position: relative
-}
-.programs-bg-card {
-    max-width: 1200px;
-    margin: 0 auto;                 /* side margins */
-    padding: 60px 40px 80px;
-    background: linear-gradient(135deg, #fff1c7, #fddb76, #e2c570);
-  
-    /* Organic flowy corners */
-    border-radius: 80px 50px 90px 60px;
-  
-    /* Soft depth */
-    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.08);
-  
-    position: relative;
-  }
-  .sticker {
-    position: absolute;
-    z-index: 1;
-    pointer-events: none; /* so stickers don’t block text */
-    transform-origin: center;
-    transition: transform 0.3s ease; /* optional for hover effects */
-  }
-  .sticker-right {
-    top: 30px;
-    right: 146px;
-    width: 250px; /* adjust size as needed */
-    height:120px;
-  }
-  .sticker-left {
-    top: -10px;
-    left: 20px;
-    height: 180px;
-    width:360px
-  }
-.programs-container {
-    display: grid;
-    justify-content: center;
-    grid-template-columns: repeat(2, 280px); /* 2 columns */
-    gap: 2rem 16rem;
-    margin-top: 4rem;
-    
+  text-align: center;
+  /* Fluid font size for section description */
+  font-size: clamp(1rem, 1.5vw, 1.3rem); 
+  position: relative;
+  padding: 0 1rem;
+  margin-bottom: 6rem;
 }
 
-/* Card */
+.programs-bg-card {
+  max-width: 1200px;
+  margin: 0 auto;
+  /* Fluid padding: scales down on mobile */
+  padding: clamp(40px, 8vw, 60px) clamp(20px, 5vw, 40px) clamp(60px, 10vw, 80px);
+  background: linear-gradient(135deg, #fff1c7, #fddb76, #e2c570);
+  border-radius: 80px 50px 90px 60px;
+  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.08);
+  position: relative;
+  overflow: hidden; /* Keeps stickers from causing horizontal scroll */
+}
+
+/* Stickers - Using % and clamp to scale them */
+.sticker {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  transition: transform 0.3s ease;
+}
+
+.sticker-right {
+  top: 8px;
+  right: 14%; /* Use % so it moves with screen width */
+  width: clamp(120px, 18vw, 220px);
+  height: auto;
+}
+
+.sticker-left {
+  top: -10px;
+  left: 2%;
+  width: clamp(160px, 22vw, 320px);
+  height: auto;
+}
+
+/* Container - Switched to auto-fit grid */
+.programs-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
+  justify-content: center;
+  gap: 2rem clamp(2rem, 10vw, 8rem); /* Adjusted gap for wider cards */
+  margin-top: 4rem;
+  width: 100%;
+}
+
+/* Card - Made width fluid so it fits the 280px column */
 .program-card {
-    width: 350px;
-    height: 320px;
+  width: clamp(320px, 80vw, 400px); 
+    height: 350px; /* Slightly increased height to keep proportions */
     perspective: 1000px;
-    margin-bottom: 3rem;
-margin-top: 3rem;
+    margin: 1.5rem auto;
+}
+
+/* Front & Back - Added fluid text sizes */
+.program-front h3 {
+  font-family: 'Fredoka', sans-serif;
+  font-size: clamp(1.2rem, 2vw, 1.4rem);
+  font-weight: 500;
+  color: #222;
+}
+
+.program-back {
+  transform: rotateY(180deg);
+  font-size: clamp(0.9rem, 1.1vw, 1rem);
+  font-weight: 500;
+  color: #222;
+  text-align: center;
+  padding: 1.2rem;
+}
+
+/* Icon - Responsive scaling */
+.icon img {
+  width: clamp(120px, 15vw, 160px);
+  height: auto;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 0.8rem;
 }
 
 .program-inner {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    transition: transform 0.6s;
-    transform-style: preserve-3d;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
 }
-
-.program-card:hover .program-inner {
-    transform: rotateY(180deg);
-}
-
-/* Front & Back */
+.program-card:hover .program-inner { transform: rotateY(180deg); }
 .program-front, .program-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    border-radius: 28px 12px 28px 12px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    backface-visibility: hidden;
-    padding: 1.5rem;
-    box-shadow: 0 12px 25px rgba(0,0,0,0.08);
-    overflow: hidden;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 28px 12px 28px 12px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  backface-visibility: hidden;
+  padding: 1.5rem;
+  box-shadow: 0 12px 25px rgba(0,0,0,0.08);
+  overflow: hidden;
 }
-
-/* Blobs - shorter + gradient */
 .blob {
-    position: absolute;
-    width: 90px;
-    height: 70px;
-    border-radius: 50% 35% 60% 50%;
-    top: -10px;
-    left: -10px;
-    z-index: 0;
+  position: absolute;
+  width: 90px;
+  height: 70px;
+  border-radius: 50% 35% 60% 50%;
+  top: -10px;
+  left: -10px;
+  z-index: 0;
 }
-
 .blob-pink { background: linear-gradient(135deg,#f4a3e1,#f4a3e1); }
 .blob-green { background: linear-gradient(135deg,#6BCF8E,#6BCF8E); }
 .blob-blue { background: linear-gradient(135deg,#5DADE2,#5DADE2); }
 .blob-brown { background: linear-gradient(135deg,#d98a4a,#d98a4a); }
 
-
-/* GIF Icon */
+/* GIF Icon - Fluid Scaling */
 .icon img {
-    width: 160px;
-    height: 160px;
-    object-fit: cover;
-    border-radius: 50%;
-    margin-bottom: 0.8rem;
+  /* Shrinks to 120px on small screens, grows to 160px on laptops */
+  width: clamp(120px, 15vw, 160px); 
+  height: clamp(120px, 15vw, 160px);
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 0.8rem;
+  /* Keeps the circle proportional */
+  aspect-ratio: 1 / 1; 
 }
 
-.program-front .icon {
-    display: block;
+/* Front Text - Fluid Scaling */
+.program-front h3 {
+  font-family: 'Fredoka', sans-serif;
+  /* Scales between 1.15rem and 1.4rem */
+  font-size: clamp(1.15rem, 3vw, 1.4rem);
+  font-weight: 500;
+  color: #222;
+  line-height: 1.2;
+  text-align: center;
 }
-.program-back .icon {
-    display: none;
+
+/* Back Text - Fluid Scaling */
+.program-back {
+  transform: rotateY(180deg);
+  /* Scales between 0.9rem and 1rem */
+  font-size: clamp(0.9rem, 2vw, 1rem);
+  font-weight: 500;
+  color: #222;
+  text-align: center;
+  padding: clamp(1rem, 5%, 1.5rem);
+  line-height: 1.5;
+}
+
+/* Maintaining the Animations & Structure */
+.program-front .icon {
+  display: block;
+  animation: float 3s ease-in-out infinite; /* Added subtle float to icons */
 }
 
 @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-6px); }
-}
-
-/* Front text */
-.program-front h3 {
-  font-family: 'Fredoka', sans-serif;
-    font-size: 1.4rem;
-    font-weight: 500;
-    color: #222;
-}
-
-@keyframes bounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-4px); }
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
 }
 
 /* CARD 1 – Play Group */
@@ -690,613 +808,769 @@ margin-top: 3rem;
   background: linear-gradient(135deg, #FFD6C9, #FFC4B2, #FFAB95, #FF8F78);
   /* softer yellow */
 }
+/* --- Fix Stickers on Smaller Screens --- */
 
-/* Back */
-.program-back {
-    transform: rotateY(180deg);
-    color: #555;
-    font-size: 1rem;
-    font-weight: 500;
-color: #222;
-    text-align: center;
-    padding: 1.2rem;
-}
-
-/* GIF only visible on front */
-.program-back .icon {
-    display: none;
-}
-
-/* Responsive */
-@media(max-width: 768px){
-    .programs-container {
-        flex-direction: column;
-        align-items: center;
-    }
-}
-
-
-/* Parent section fix */
-.about-section {
+@media (max-width: 768px) {
+  /* 1. Adjust the main Section Header */
+  .programs-section h2 {
     display: flex;
+    flex-direction: column; /* Stack Rainbow -> Text -> Crayon vertically */
+    align-items: center;
     justify-content: center;
-    padding: 80px 20px;
-   background:#FFF9F7 ;
+    gap: 15px; /* Space between stickers and text */
+    margin-top: 60px;
   }
-  
-  /* Cloud container */
-  .about-cloud {
-    max-width: 980px;
-    width: 100%;
-    padding: 60px 70px;
-    margin-top: 100px;
-    text-align: center;
 
-    /* background: linear-gradient(135deg, #d6bdf1, #bc98e9, #9b70dc); */
-    background: linear-gradient(135deg, #cfaef2, #d48fe8, #f6b4f2);
-    /* pastel green */
-    border: 3px solid #7ddf9e; /* pastel pink */
-    border-radius: 140px;
-  
-    position: relative;
-    z-index: 1;  
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
-    overflow: visible;
+  /* 2. Reposition Stickers from Corners to Center */
+  .sticker-left, 
+  .sticker-right {
+   /* Removes absolute corner positioning */
+    display: block;   /* Allows them to be stacked */
+    transform: none;  /* Remove any corner rotations */
+    margin: 0 auto;   /* Keep them centered */
   }
-  .about-sticker {
-    position: absolute;
-  left: -180px;          /* pushes it outside the card */
+
+  /* 3. Refine Rainbow Sticker (Left) */
+  .sticker-left {
+    width: 170px; /* Specific fixed width for mobile */
+    order: 1; 
+    top:-8px;
+    left:-6px;    /* Places Rainbow at the TOP */
+  }
+
+  /* 4. The Text Heading itself */
+  .programs-section h2 .heading-text {
+    font-size: 1.8rem; /* Adjusted for mobile */
+    order: 2;          /* Places Text in the MIDDLE */
+  }
+
+  /* 5. Refine Crayon Sticker (Right) */
+  .sticker-right {
+    display: none;
+  }
+  .programs-container {
+     /* Adjusted gap for wider cards */
+    margin-top: 1.5rem;
+   
+  }
+}
+
+
+/* About Section */
+.about-section {
+  display: flex;
+  justify-content: center;
+  /* Vertical padding scales down on mobile */
+  padding: 30px clamp(20px, 10vw, 70px) 80px clamp(20px, 10vw, 70px);
+  background: #FFF9F7;
+  overflow: hidden; /* Crucial to prevent stickers from causing horizontal scroll */
+}
+
+/* Cloud container */
+.about-cloud {
+  max-width: 980px;
+  width: 100%;
+  /* Padding scales: left/right padding reduces on mobile to give text room */
+  padding: clamp(40px, 8vw, 60px) clamp(20px, 10vw, 70px);
+  margin-top: clamp(50px, 15vw, 100px);
+  text-align: center;
+  background: linear-gradient(135deg, #cfaef2, #d48fe8, #f6b4f2);
+  border: 3px solid #7ddf9e;
+  /* Border radius softens on mobile */
+  border-radius: clamp(40px, 15vw, 140px);
+  position: relative;
+  z-index: 1;  
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Fluid Stickers */
+.about-sticker, .about-sticker-right {
+  position: absolute;
+  z-index: 2;
+  pointer-events: none;
+  height: auto; /* Keep aspect ratio */
+}
+
+.about-sticker {
+  /* Moves from -180px on laptop to 0px on mobile if needed */
+  left: clamp(-180px, -15vw, -50px); 
   top: 50%;
   transform: translateY(-50%) rotate(-7deg);
-  width: 360px;
-  height:280px;
-  z-index: 2;
-  pointer-events: none; 
-  }
-
-  .about-sticker-right {
-    position: absolute;
-  right: -270px;          /* pushes it outside the card */
-  top: -25px;
-  width: 390px;
-  height:300px;
-  z-index: 2;
-  pointer-events: none; 
-  }
-    
-  .about-cloud:hover {
-    transform: translateY(-10px) scale(1.03);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+  width: clamp(180px, 35vw, 400px);
 }
 
+.about-sticker-right {
+  right: clamp(-270px, -20vw, -80px);
+  top: 45px;
+  width: clamp(180px, 35vw, 390px);
+}
 
-/* Cloud puffs */
+/* Hide stickers on very small screens so they don't cover the cloud */
+@media (max-width: 1200px) {
+  .about-sticker, .about-sticker-right {
+      opacity: 0.4; /* Fade them out slightly as they get closer to text */
+  }
+}
+
+@media (max-width: 768px) {
+  .about-sticker, .about-sticker-right {
+      display: none; /* Best to hide them on phones to keep the cloud readable */
+  }
+}
+
+.about-cloud:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+}
+
+/* Cloud puffs - responsive positioning */
 .about-cloud::before,
 .about-cloud::after {
   content: "";
   position: absolute;
-  width: 150px;
-  height: 70px;                 /* semi-circle */
+  width: clamp(80px, 15vw, 150px);
+  height: clamp(40px, 8vw, 70px);
   background: #7ddf9e;
   border: 3px solid #cfaef2;
   border-radius: 140px 140px 0 0;
-  top: -74px;
+  top: clamp(-49px, -14vw, -104px);
   z-index: 0;
 }
 
-/* Left puff */
-.about-cloud::before {
-  left: 130px;
+.about-cloud::before { left: 14%; }
+.about-cloud::after { right: 14%; }
+
+/* Typography */
+.about-cloud h2 {
+  margin-bottom: 20px;
+  font-size: clamp(24px, 5vw, 32px);
+  font-weight: 700;
+  color: #222;
 }
 
-/* Right puff */
-.about-cloud::after {
-  right: 130px;
+.about-cloud p {
+  font-size: clamp(15px, 1.2vw, 17px);
+  line-height: 1.7;
+  color: #222;
+  max-width: 760px;
+  margin: auto;
+  /* Remove fixed left padding on mobile for better centering */
+  padding-left: clamp(0px, 2vw, 20px);
 }
-  /* Heading */
-  .about-cloud h2 {
-    margin-bottom: 20px;
-    font-size: 32px;
-    font-weight: 700;
-    color:  #222;
-  }
-  
-  /* Text */
-  .about-cloud p {
-    font-size: 17px;
-    line-height: 1.7;
-    color: #222;
-    max-width: 760px;
-    margin: auto;
-    padding-left: 20px;
-  }
   
 /* Modal background */
 .modal {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.5);
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-  }
-  
-  /* Modal box */
-  .modal-content {
-    background: #d1f4dd;
-    border: 3px solid #f998b5;
-    border-radius: 25px;
-    padding: 30px;
-    width: 90%;
-    max-width: 400px;
-    text-align: center;
-    position: relative;
-    animation: popup 0.3s ease;
-  }
-  
-  /* Popup animation */
-  @keyframes popup {
-    from {
-      transform: scale(0.8);
-      opacity: 0;
-    }
-    to {
-      transform: scale(1);
-      opacity: 1;
-    }
-  }
-  
-  /* Close button */
-  .close-btn {
-    position: absolute;
-    top: 12px;
-    right: 18px;
-    font-size: 24px;
-    cursor: pointer;
-    color: #ff6f91;
-  }
-  
-  /* Form inputs */
-  .admission-form input {
-    width: 100%;
-    padding: 12px;
-    margin: 10px 0;
-    border-radius: 20px;
-    border: 1px solid #ccc;
-    font-size: 14px;
-  }
-  
-  /* Submit button */
-  .admission-form .primary-btn {
-    width: 100%;
-    margin-top: 15px;
-  }
-  
-    /* Why us? */
-  * {
-    box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
-  }
-  
-  .why-us {
-    padding: 60px 20px;
-    background:#FFF9F7;
-    text-align: center;
-  }
-  
-  .why-us h2 {
-    font-size: 36px;
-    color: #222;
-    margin-bottom: 10px;
-  }
-  
-  .why-us subtitle {
-    max-width: 600px;
-    margin: 20px auto 40px;
-    color: #0c0c0c;
-    font-weight: 200;
-    font-size: 16px;
-    line-height:1.6rem;
-  }
-  
-  .slider-container {
-    overflow: hidden;
-    position: relative;
-  }
-  
-  .cards {
-    display: flex;
-    gap: 20px;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    padding-bottom: 20px;
-    scrollbar-width: none;
-    margin-top: 3rem;
-  }
-  
-  .cards::-webkit-scrollbar {
-    display: none;
-  }
-  
-  .card {
-    min-width: 300px;
-    border-radius: 20px;
-    padding: 24px;
-    text-align: left;
-    scroll-snap-align: center;
-  }
-  
-  .card h3 {
-    margin-bottom: 10px;
-    font-size: 20px;
-    text-align: center;
-  }
-  
-  .card p {
-    font-size: 14px;
-    line-height: 1.6;
-  }
-  
-  /* Pastel colors */
-  .peach { background: #e9d5ff; }
-  .green { background: #99f6e4; }
-  .blue { background: #8ecae6; }
-  .yellow { background: #fde68a; }
-  .lavender { background: #f6c1a3; }
-  .mint { background: #7ddf9e; }
-  
-  /* Dots */
-  .dots {
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-    margin-top: 10px;
-  }
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6); /* Slightly darker for better focus */
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 20px; /* Ensures modal doesn't touch screen edges on tiny phones */
+}
 
-  .card img {
-    height: 150px;
-    object-fit: contain;
-    background: rgba(255, 255, 255, 0.4);
-    padding: 10px;
-  }
+/* Modal box */
+.modal-content {
+  background: #d1f4dd;
+  border: 3px solid #f998b5;
+  border-radius: clamp(15px, 5vw, 25px); /* Rounded corners scale down */
+  
+  /* Fluid Padding: More breathing room on desktop, tighter on mobile */
+  padding: clamp(20px, 5vw, 40px);
+  
+  width: 100%;
+  max-width: 450px; /* Slightly wider for a more professional feel */
+  text-align: center;
+  position: relative;
+  animation: popup 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Added a slight "bounce" */
+  
+  /* Prevents the modal from becoming taller than the screen */
+  max-height: 90vh;
+  overflow-y: auto;
+}
 
-  .card {
-    transition: transform 0.3s ease;
-  }
+/* Form inputs */
+.admission-form input {
+  width: 100%;
+  /* Increase padding on mobile for "fat-finger" friendliness */
+  padding: clamp(10px, 3vw, 14px); 
+  margin: 8px 0;
+  border-radius: 20px;
+  border: 2px solid #eee; /* Slightly thicker border for clarity */
   
-  .card:hover {
-    transform: translateY(-6px);
-  }
+  /* Font size must be at least 16px on mobile to prevent iOS auto-zoom */
+  font-size: clamp(16px, 1.1rem, 18px); 
   
-  
-  .dot {
-    width: 8px;
-    height: 8px;
-    background: #c4c4c4;
-    border-radius: 50%;
-    transition: background 0.3s;
-  }
-  
-  .dot.active {
-    background: #000;
-  }
-  
-  /*FAQ*/
-  :root {
-    --font-main: 'Fredoka', sans-serif;
-  }
-  
-  .faq-container {
-    text-align: center;
-    padding: 120px 20px;
-    background-color: #f0fdf9; /* Light mint background like the image */
-    font-family: var(--font-main);
+  transition: border-color 0.3s ease;
+  box-sizing: border-box; /* Ensures padding doesn't break width */
+}
 
+.admission-form input:focus {
+  outline: none;
+  border-color: #f998b5;
+}
 
-  }
-  .faq-header {
-    text-align: center;
-    margin-bottom: 40px;
-    position: relative;
-  }
+/* Submit button */
+.admission-form .primary-btn {
+  width: 100%;
+  margin-top: 15px;
+  padding: 14px;
+  font-size: 16px;
+}
 
-  
-  .sun {
-    width: 150px; /* adjust size */
-    height: 150px;
-    position: absolute;
-  }
-  
-  .sun-left {
-    transform: rotate(-15deg); /* tilt left */
-    top: -60px;        /* move up */
-  left: 20%;         /* move left of QUESTIONS */
-  }
-  
-  .sun-right {
-    transform: rotate(15deg); /* tilt right */
+/* Close button - larger hit area for mobile */
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 28px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #ff6f91;
+}
 
-    top: -60px;        /* move up */
-  right: 20%; 
-  }
+/* Popup animation */
+@keyframes popup {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
   
-  .cloud-left {
-    width: 210px; /* adjust size */
-    height: auto;
-    margin: 0 5px;
-    top: 25px;
-  left: -2%;  
-    position: absolute;
-  }
-  
-  .cloud-right {
-    width: 210px; /* adjust size */
-    height: auto;
-    margin: 0 5px;
-    top: 25px;
-  right:-2%;  
-    position: absolute;
-  }
-  /* Optional: make clouds float */
-  @keyframes floatCloud {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-5px); }
-    100% { transform: translateY(0px); }
-  }
-  
-  .cloud {
-    animation: floatCloud 4s ease-in-out infinite;
-  }
-  /* THE BUBBLY TITLE STYLE */
-  .bubbly-title {
-    font-size: 5rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    margin-bottom: 0;
-    letter-spacing: 2px;
-  }
-  
-  .bubbly-title span {
-    display: inline-block;
-    /* This creates the thick blue outline seen in your image */
-    -webkit-text-stroke: 2px #4A90E2; 
-    filter: drop-shadow(2px 2px 0px #fff);
-  }
-  
-  /* Specific colors from the image palette */
-  .bubbly-title span:nth-child(1) { color: #FF8B8B; } /* Q - Soft Red */
-  .bubbly-title span:nth-child(2) { color: #FFD93D; } /* U - Yellow */
-  .bubbly-title span:nth-child(3) { color: #6BCB77; } /* E - Green */
-  .bubbly-title span:nth-child(4) { color: #4D96FF; } /* S - Blue */
-  .bubbly-title span:nth-child(5) { color: #FF8B8B; } /* T - Red */
-  .bubbly-title span:nth-child(6) { color: #FFD93D; } /* I - Yellow */
-  .bubbly-title span:nth-child(7) { color: #6BCB77; } /* O - Green */
-  .bubbly-title span:nth-child(8) { color: #4D96FF; } /* N - Blue */
-  .bubbly-title span:nth-child(9) { color: #FF8B8B; } /* S - Red */
-  .bubbly-title span:nth-child(10) { color: #FFD93D; } /* ? - Yellow */
-  
-  .subtitle {
-    font-size: 1.5rem;
-    color: #2D3436;
-    font-weight: 600;
-    margin-top: -10px;
-  }
-  
-  /* LEANER BOX DESIGN */
-  .faq-grid {
-    display: flex;
+  /* Why Us Section */
+.why-us {
+  /* Fluid padding: Top/Bottom 40px-60px, Side 20px */
+  padding: clamp(40px, 8vw, 60px) 20px;
+  background: #FFF9F7;
+  text-align: center;
+}
+
+.why-us h2 {
+  /* Font size scales between 28px and 36px */
+  font-size: clamp(1.75rem, 5vw, 2.25rem);
+  color: #222;
+  margin-bottom: 10px;
+}
+
+.why-us subtitle {
+  display: block; /* Ensure subtitle behaves like a block element */
+  max-width: 600px;
+  width: 90%;
+  margin: 20px auto 40px;
+  color: #0c0c0c;
+  font-weight: 400; /* Increased from 200 for better mobile readability */
+  font-size: clamp(0.9rem, 1.2vw, 1rem);
+  line-height: 1.6;
+}
+
+/* Slider Container */
+.slider-container {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.cards {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  /* Allows "snapping" to cards while swiping on mobile */
+  scroll-snap-type: x mandatory;
+  padding: 10px 10px 30px; /* Space for hover shadow */
+  scrollbar-width: none;
+  margin-top: 2rem;
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+}
+
+.cards::-webkit-scrollbar {
+  display: none;
+}
+
+/* Individual Card */
+.card {
+  /* Don't grow, don't shrink, stay at base width (clamp makes it fluid) */
+  flex: 0 0 clamp(280px, 70vw, 320px);
+  border-radius: 20px;
+  padding: 24px;
+  text-align: left;
+  scroll-snap-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
   flex-direction: column;
+  align-items: center; /* Center-aligns image and title inside card */
+}
+
+.card h3 {
+  margin: 15px 0 10px;
+  font-size: clamp(1.1rem, 2vw, 1.25rem);
+  text-align: center;
+}
+
+.card p {
+  font-size: clamp(0.85rem, 1vw, 0.9rem);
+  line-height: 1.6;
+  text-align: center; /* Matches your layout aesthetic */
+}
+
+.card img {
+  /* Scales width between 140px and 200px based on screen size */
+  width: 100%;
+  max-width: clamp(140px, 15vw, 200px); 
+  
+  /* Scales height between 120px and 160px */
+  height: clamp(120px, 12vw, 160px);
+  
+  /* Keeps the image centered within the card */
+  margin: 0 auto 1rem;
+  
+  object-fit: contain;
+  background: rgba(255, 255, 255, 0.4);
+  padding: clamp(8px, 2vw, 15px); /* Padding also shrinks on mobile */
+  border-radius: 15px;
+  display: block; /* Ensures margin: auto works */
+}
+
+/* Hover effect */
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 20px rgba(0,0,0,0.05);
+}
+.peach { background: #e9d5ff; }
+.green { background: #99f6e4; }
+.blue { background: #8ecae6; }
+.yellow { background: #fde68a; }
+.lavender { background: #f6c1a3; }
+.mint { background: #7ddf9e; }
+/* Dots */
+.dots {
+  display: flex;
+  justify-content: center;
   gap: 8px;
-  max-width: 1000px;   /* controls the LENGTH (width) */
+  margin-top: 10px;
+}
+
+.dot {
+  width: clamp(8px, 2vw, 10px);
+  height: clamp(8px, 2vw, 10px);
+  background: #c4c4c4;
+  border-radius: 50%;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.dot.active {
+  background: #000;
+  transform: scale(1.2);
+}
+  
+:root {
+  --font-main: 'Fredoka', sans-serif;
+}
+
+/* Container */
+.faq-container {
+  text-align: center;
+  padding: clamp(70px,10vw,120px) clamp(15px,4vw,20px);
+  background-color: #f0fdf9;
+  font-family: var(--font-main);
+}
+
+/* Header */
+.faq-header {
+  text-align: center;
+  margin-bottom: clamp(25px,5vw,40px);
+  position: relative;
+}
+
+/* Sun Stickers */
+.sun {
+  position: absolute;
+  width: clamp(80px,12vw,150px);
+  height: auto;
+}
+
+.sun-left {
+  transform: rotate(-15deg);
+  top: clamp(-40px,-5vw,-60px);
+  left: clamp(5%,20%,20%);
+}
+
+.sun-right {
+  transform: rotate(15deg);
+  top: clamp(-40px,-5vw,-60px);
+  right: clamp(5%,20%,20%);
+}
+
+/* Clouds */
+.cloud-left,
+.cloud-right{
+  width: clamp(120px,18vw,210px);
+  height: auto;
+  position: absolute;
+}
+
+.cloud-left{
+  top: clamp(10px,3vw,25px);
+  left: clamp(-6%, -2%, -2%);
+}
+
+.cloud-right{
+  top: clamp(10px,3vw,25px);
+  right: clamp(-6%, -2%, -2%);
+}
+
+/* Floating animation */
+@keyframes floatCloud {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-5px); }
+  100% { transform: translateY(0px); }
+}
+
+.cloud {
+  animation: floatCloud 4s ease-in-out infinite;
+}
+
+/* Bubbly Title */
+.bubbly-title {
+  font-size: clamp(2.2rem,6vw,5rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 0;
+  letter-spacing: clamp(1px,0.2vw,2px);
+}
+
+.bubbly-title span {
+  display: inline-block;
+  -webkit-text-stroke: 2px #4A90E2;
+  filter: drop-shadow(2px 2px 0px #fff);
+}
+
+/* Letter colors */
+.bubbly-title span:nth-child(1){ color:#FF8B8B;}
+.bubbly-title span:nth-child(2){ color:#FFD93D;}
+.bubbly-title span:nth-child(3){ color:#6BCB77;}
+.bubbly-title span:nth-child(4){ color:#4D96FF;}
+.bubbly-title span:nth-child(5){ color:#FF8B8B;}
+.bubbly-title span:nth-child(6){ color:#FFD93D;}
+.bubbly-title span:nth-child(7){ color:#6BCB77;}
+.bubbly-title span:nth-child(8){ color:#4D96FF;}
+.bubbly-title span:nth-child(9){ color:#FF8B8B;}
+.bubbly-title span:nth-child(10){ color:#FFD93D;}
+
+/* Subtitle */
+.subtitle {
+  font-size: clamp(1rem,2.5vw,1.5rem);
+  color: #2D3436;
+  font-weight: 600;
+  margin-top: -10px;
+}
+
+/* FAQ grid */
+.faq-grid {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(6px,1.5vw,8px);
+  max-width: 1000px;
   margin: auto;
-  }
-  
-  .faq-card {
-    background: white;
-    padding:10px;
-    border-radius: 25px;
-    border: 2px solid #E0E0E0;
-    transition: all 0.3s ease;
-    text-align: left;
-    display: none;
-  }
-  
+}
+
+/* FAQ cards */
+.faq-card {
+  background: white;
+  padding: clamp(8px,2vw,10px);
+  border-radius: 25px;
+  border: 2px solid #E0E0E0;
+  transition: all 0.3s ease;
+  text-align: left;
+  display: none;
+}
 
 .faq-card.visible {
   display: block;
 }
 
+/* Toggle button */
 .faq-toggle-container {
   text-align: center;
-  margin-top: 20px;
+  margin-top: clamp(15px,3vw,20px);
 }
 
 #faqToggleBtn {
   background: none;
   border: none;
-  font-size: 18px;
+  font-size: clamp(14px,2vw,18px);
   cursor: pointer;
-  color:  #449bf2;
+  color: #449bf2;
   font-weight: 600;
 }
-  /* .faq-card:hover {
-    transform: scale(1.03);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-  } */
-  
-  .faq-card h3 {
-    font-size: 1rem;
-    margin-bottom: 6px;
-    color: #333;
-  }
 
-  .faq-card p {
-    font-size: 0.9rem;
-    line-height: 1.2;   /* tighter text */
-    margin: 0;
-  }
-  
-  /* Leaner color accents */
-  .yelloww { border-top: 8px solid #f0d97b; }
-  .pink   { border-top: 8px solid #6fa5ef; }
-  .greenn  { border-top: 8px solid #8dc995; }
-  .bluee   { border-top: 8px solid #f7a6a6; }
+/* Text */
+.faq-card h3 {
+  font-size: clamp(0.9rem,1.2vw,1rem);
+  margin-bottom: 6px;
+  color: #333;
+}
+
+.faq-card p {
+  font-size: clamp(0.8rem,1vw,0.9rem);
+  line-height: 1.3;
+  margin: 0;
+}
+
+/* Top border accents */
+.yelloww { border-top: 8px solid #f0d97b; }
+.pink    { border-top: 8px solid #6fa5ef; }
+.greenn  { border-top: 8px solid #8dc995; }
+.bluee   { border-top: 8px solid #f7a6a6; }
 
   .nav-links a.active {
     border-bottom: 2px solid #FFD6C9;
   }
-  
-  .curriculum-card {
-    max-width: 1100px;
-    width: 100%;
-    background: linear-gradient(135deg, #f6cab7, #aceaf4, #f9bdd1);
-    border-radius: 32px;
-    padding: 50px;
-    display: flex;
-    flex-direction: column; /* heading on top */
-    gap: 30px;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
-    margin-left: 12rem;
-    position: relative;
-   padding-bottom: 6rem;
-   margin-bottom: 4rem;
-   margin-top: 2rem;
+  /* Responsive adjustments for FAQ Header Stickers */
+@media (max-width: 768px) {
+  /* Ensure the header has enough space for stickers above it */
+  .faq-header {
+    padding-top: 40px; 
+    margin-bottom: 20px;
+  }
+
+  /* Sun Stickers */
+  .sun {
+    width: 60px; /* Smaller fixed size for mobile */
+    top: -30px;  /* Bring them closer to the title */
+  }
+
+  .sun-left {
+    left: 5px;   /* Pin to the edge instead of using large % */
+    transform: rotate(-10deg);
+  }
+
+  .sun-right {
+    right: 5px;  /* Pin to the edge */
+    transform: rotate(10deg);
+  }
+
+  /* Cloud Stickers */
+  .cloud-left,
+  .cloud-right {
+    width: 80px; /* Scale down clouds */
+    top: -10px;
+  }
+
+  .cloud-left {
+    left: -10px; /* Slight overflow looks more natural/bubbly */
+  }
+
+  .cloud-right {
+    right: -10px;
+  }
+}
+
+/* Extra small screens (Phones) */
+@media (max-width: 480px) {
+  .sun {
+    width: 90px;
+    top: -40px;
   }
   
-  /* Heading */
-  .curriculum-heading {
-    font-family: 'Fredoka', sans-serif;
-    font-size: 3rem;
-    text-align: left;
-    padding-left: 20%;
+  .cloud-left, 
+  .cloud-right {
+    width: 90px;
   }
+}
   
-  /* ROW: text + sticker */
-  .curriculum-body {
-    display: flex;
-    gap: 40px;
-    align-items: center;
-  }
-  
-  /* Text */
-  .curriculum-text {
-    flex: 2;
-    text-align: justify;
-    max-width: 65%;
-  }
-  
-  .curriculum-text p {
-    font-size: 1.05rem;
-    line-height: 1.7;
-    padding-left: 2rem;
-  }
-  
-  /* Sticker */
-  .curriculum-sticker {
-    position: absolute;
-    right: -20px;
-    bottom: 5px;
-    width: 450px; /* increase freely */
-    height: 420px;
-    filter: drop-shadow(0 10px 15px rgba(0,0,0,0.15));
-  }
-  @media (max-width: 768px) {
-    .curriculum-sticker {
-      position: static;
-      width: 200px;
-      margin-top: 20px;
-      transform: none;
-    }
-  
-    .curriculum-text {
-      max-width: 100%;
-    }
-  } 
+  /* --- Base Styles (Laptop/Desktop) --- */
+.curriculum-card {
+  max-width: 1100px;
+  width: 90%; /* Changed from 100% to allow breathing room */
+  background: linear-gradient(135deg, #f6cab7, #aceaf4, #f9bdd1);
+  border-radius: 32px;
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+  /* Use margin: auto for centering instead of fixed 12rem for better fluidity */
+  margin: 2rem auto 2rem auto; 
+  position: relative;
+  padding-bottom: 4rem;
+}
+
+.curriculum-heading {
+  font-family: 'Fredoka', sans-serif;
+  font-size: clamp(2rem, 5vw, 3.5rem); /* Fluid font size */
+  text-align: left;
+  padding-left: 15%;
+}
+
+.curriculum-body {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+}
+
+.curriculum-text {
+  flex: 2;
+  text-align: justify;
+  max-width: 60%; /* Adjusted slightly for better text flow */
+}
+
+.curriculum-text p {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  padding-left: 2rem;
+  text-align: justify;
+  text-justify: inter-word; /* Better spacing between words */
+ /* Prevents large white gaps by breaking long words if needed */
+  margin: 0;
+}
+
+.curriculum-sticker {
+  position: absolute;
+  right: -20px;
+  bottom: 5px;
+  width: 60%; /* Relative width for fluidity */
+  max-width: 450px;
+  height: auto; /* Keep aspect ratio */
+  filter: drop-shadow(0 10px 15px rgba(0,0,0,0.15));
+}
+
+.bee {
+  position: absolute;
+  width: 400px; /* adjust size as needed */
+  height:400px;
+  z-index: 1;
+  pointer-events: none; /* so stickers don’t block text */
+  transform-origin: center;
+  transition: transform 0.3s ease; /* optional for hover effects */
+  left:-200px;
+  transform: rotate(-8deg);
+  top:95px;
+}
+
+/* --- Responsive Adjustments --- */
+
+/* For Tablets/Small Laptops */
+@media (max-width: 1200px) {
   .bee {
-    position: absolute;
-    width: 450px; /* adjust size as needed */
-    height:420px;
-    z-index: 1;
-    pointer-events: none; /* so stickers don’t block text */
-    transform-origin: center;
-    transition: transform 0.3s ease; /* optional for hover effects */
-    left:-200px;
-    transform: rotate(-8deg);
-    top:55px;
+    left: -80px; /* Pull bee in so it doesn't go off-screen */
+    width: 250px;
+  }
+}
+
+/* For Mobile Devices */
+@media (max-width: 768px) {
+  .bee {
+    display: none; /* Hides the bee on mobile */
   }
 
-  .core-beliefs {
+  .curriculum-card {
+    padding: 30px 20px 10px;
+    width: 95%;
+    margin-top: 1rem;
+  }
+
+  .curriculum-heading {
+    padding-left: 0;
     text-align: center;
-    position: relative;
-  }
-  
-  .core-beliefs h2 {
-    font-family: 'Fredoka', sans-serif;
-    font-size: 2.6rem;
-    margin-bottom: 7rem;
-  }
-  
-  /* Card grid */
-  .belief-cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 40px;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding-bottom: 20px;
-  }
-  
-  /* Individual card */
-  .belief-card {
-    width: 240px;
-    height: 240px;
-    border-radius: 50%;
-    background: linear-gradient(
-      135deg,
-      #b9b9ee,   /* mint green */
-      #f1caf5,   /* soft orange */
-      #f8cda7    /* warm peach */
-    );
-    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-    padding: 30px;
-    
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.3s ease;
-  }
-  
-  .belief-card:hover {
-    transform: translateY(-6px);
-  }
-  
-  /* Icon */
-  .belief-card span {
-    font-size: 2.5rem;
-    display: block;
-    margin-bottom: 15px;
-  }
-  
-  /* Text */
-  .belief-card p {
-    font-size: 1.05rem;
-    line-height: 1.6;
-  }
-  .spiral {
-    position:absolute;
-    width: 190px;              /* bigger base */ 
-    top: 50px;
-     
-  }
-  .spiral.left{
-    left: 350px;
-  }
-  .spiral.right{
-    right: 340px;
+    font-size: 2.2rem;
   }
 
+  .curriculum-body {
+    flex-direction: column; /* Stack text and image */
+    text-align: center;
+  }
+
+  .curriculum-text {
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .curriculum-text p {
+    padding-left: 0;
+  }
+
+  .curriculum-sticker {
+    position: static; /* Removes absolute positioning */
+    width: 100%;
+    margin: 20px auto 0 auto;
+    display: block;
+  }
+}
+ 
+
+.core-beliefs {
+  text-align: center;
+  position: relative;
+  overflow: hidden; /* Prevents butterflies from causing horizontal scroll */
+  padding: 10px 20px;
+  background-color: #FFF9F7; /* Optional: light background to match your theme */
+}
+
+.core-beliefs-title {
+  font-family: 'Fredoka', sans-serif;
+  font-size: clamp(4rem, 10vw, 8rem);
+  padding: 10px 20px 60px 20px;
+  display: inline-flex;    
+  align-items: center;     /* This centers text and spirals vertically */
+  justify-content: center;
+  position: relative;
+  gap: 30px;               /* Space between spirals and text */
+  line-height: 1;          /* Ensures the text box doesn't have extra height */
+}
+
+/* Spirals: Simplified for Flexbox */
+.spiral {
+  width: 140px;            /* Your preferred size */
+  height: auto;
+  flex-shrink: 0;
+  /* Remove transform: translateY(-50%) as it was pulling them too high */
+}
+
+/* No specific left/right positioning needed when using inline-flex gap */
+.spiral.left, .spiral.right {
+  position: static; 
+}
+
+/* --- Card Grid --- */
+.belief-cards {
+  display: grid;
+  /* Automatically fits as many 240px circles as possible */
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 80px;
+  max-width: 1200px;
+  margin: 0 auto;
+  justify-items: center; /* Centers circles in their grid cells */
+}
+
+/* Individual Circle Card */
+.belief-card {
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #b9b9ee, #f1caf5, #f8cda7);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+  padding: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.belief-card:hover {
+  transform: translateY(-10px) scale(1.05);
+}
+
+.belief-card p {
+  font-size: 1.05rem;
+  line-height: 1.5;
+  color: #333;
+  margin: 0;
+  font-weight: 500;
+}
   .butterfly-corner {
     position: absolute;
     top: 20px;
@@ -1380,6 +1654,71 @@ color: #222;
   50%  { transform: scale(1.06) rotate(calc(var(--r, 0deg) + 3deg)); }
   100% { transform: scale(1) rotate(var(--r, 0deg)); }
 }
+@media (max-width: 1100px) {
+  .butterfly-corner {
+    transform: scale(0.8); /* Shrink butterflies before hiding them */
+  }
+  .butterfly-corner.left { left: -30px; }
+  .butterfly-corner.right { right: -30px; }
+}
+
+/* For Mobile Devices */
+@media (max-width: 768px) {
+  .butterfly-corner {
+    display: block; /* Show butterflies on mobile */
+    top: -20px; /* Adjust top positioning for title */
+    width: 150px; /* Reduce width for smaller butterflies */
+    height: 150px; /* Reduce height for smaller butterflies */
+  }
+
+  .butterfly-corner.left {
+    top: 60px; /* Adjust left positioning for title */
+  }
+
+  .butterfly-corner.right {
+    right: 20px; /* Adjust right positioning for title */
+  }
+
+  .bf {
+    width: 50px; /* Reduce butterfly size for mobile */
+  }
+
+  /* Adjust individual butterfly positions for mobile */
+  .left .b1 { top: 60px; left: 40px; }
+  .left .b2 { top: 190px; left: 10px; }
+  .left .b3 { top: 320px; left: 70px; }
+  .left .b4 { top: 40px; left: 90px; }
+  .right .b5 { top: 162px; right: -2px; }
+  .right .b6 { top: 286px; right: -40px; }
+  .right .b7 { top: 420px; right: 20px; }
+  .right .b8 { top: 162px; right: -2px; }
+
+  .core-beliefs-title {
+    font-size: 4rem;      /* Adjusted so text doesn't overflow screen */
+    white-space: nowrap;    /* FORCES the text to stay on one single line */
+    gap: 10px;              /* Reduces gap between spirals and text */
+    padding: 10px 10px 50px 10px;;             /* Removes extra padding that was squeezing the text */
+    
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .spiral {
+    width: 80px;            /* Smaller spirals so they fit next to the text */
+    height: auto;
+    flex-shrink: 0;
+  }
+
+  .belief-cards {
+    gap: 40px; /* More vertical space when stacked */
+  }
+  
+  .belief-card {
+    width: 220px; /* Slightly smaller circles for mobile */
+    height: 220px;
+  }
+}
 
 .cards-container {
   display: flex;
@@ -1391,26 +1730,29 @@ color: #222;
   overflow-x: hidden;
 }
 .owl {
-
-height: 450px;
-width:650px;
+  height: auto;
+  width: 35%;          /* Scalable width */
+  max-width: 650px;
 transform: rotate(5deg);
 
 position: absolute;
-  left: -100px;
-  top: 120px;
+  left: -2%;
+  top: 80px;
   z-index: 2;
+  pointer-events: none;
 }
 .bear {
 
-  height: 420px;
-  width:600px;
+  height: auto;
+  width: 30%;          /* Scalable width */
+  max-width: 600px;
   transform: rotate(5deg);
   
   position: absolute;
-    right: -110px;
+    right: -2%;
     bottom: 50px;
     z-index: 2;
+    pointer-events: none;
   }
 
 .cardd {
@@ -1438,6 +1780,10 @@ margin-top: 4rem;
   line-height: 1.7;          /* better readability */
   color: #1f1f1f;
 
+}
+
+.mission-vision-banner {
+  display: none;
 }
 
 /* Ombre / Gradient backgrounds */
@@ -1478,5 +1824,111 @@ margin-top: 4rem;
   flex-shrink: 0;
 }
 
+@media (max-width: 1024px) {
+  .vision, .mission {
+    margin-left: auto;
+    margin-right: auto; /* Center cards on tablets */
+  }
+  .owl { 
+    left: -13%;
+    width: 65%;          /* Scalable width */
+    max-width: 650px;
+    transform: rotate(-10deg);
+   } /* Tuck them in slightly so they don't cover text */
+  .bear { right: -15%; }
+}
 
+@media (max-width: 768px) {
+  .cards-container {
+    padding: 20px 10px; /* Space for characters at top/bottom */
+  }
+  
+  .cardd {
+    width: 95%;
+    border-radius: 60px; /* Better text flow for vertical screens */
+    padding: 40px 20px;
+  }
 
+  /* 2. SHOW and STYLE the new rectangular image for mobile */
+  .mission-vision-banner {
+    display: block;      /* Makes the image visible on mobile */
+    width: 100%;         /* Fits the full width of the mobile screen */
+    height: auto;        /* Maintains the correct aspect ratio */
+    margin-top: 20px; /* Space between the new image and the cards */
+    max-width: 500px;    /* Optional: prevents the image from getting too massive on small laptops */
+             /* Keeps it above other elements */
+  }
+
+  .bear {
+    width: 200px;
+    bottom: -1%;
+  }
+}
+
+/* DAYCARE SECTION */
+.daycare-section {
+  padding: 60px 20px;
+  flex: 1;
+}
+
+.daycare-container {
+  max-width: 1100px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  flex-wrap: wrap;
+}
+
+/* LEFT IMAGE */
+.daycare-image {
+  flex: 1;
+  text-align: center;
+}
+
+.daycare-image img {
+  width: 100%;
+  max-width: 550px;
+}
+
+/* RIGHT CONTENT */
+.daycare-content {
+  flex: 1;
+}
+
+.daycare-content h2 {
+  color:#5D4037;
+  font-family: 'Fredoka', sans-serif;
+  font-size: 36px;
+  margin-bottom: 15px;
+}
+
+.daycare-content p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #444;
+  text-align: justify;
+}
+
+.bottom-image {
+  margin: 0;
+  padding: 0;
+  line-height: 0; /* important: removes inline image gap */
+}
+
+.bottom-image img {
+  width: 100%;
+  max-height: 400px;
+  display: block; /* removes extra bottom space */
+}
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .daycare-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .daycare-content h2 {
+    font-size: 28px;
+  }
+}
