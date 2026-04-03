@@ -253,7 +253,7 @@ body {
   pointer-events: none;
   transform-origin: center;
   transition: transform 0.3s ease;
-  left: clamp(60px, 12vw, 200px);
+  left: clamp(0px, 0vw, 200px);
   top: clamp(10px, 5vw, 20px);
   transform: rotate(-7deg);
 }
@@ -319,10 +319,13 @@ body {
 }
 @media (max-width: 768px) {
   .sticker-sun {
-    width:80px;
+    width:90px;
     left:-1px;
-    top:-10px;
+    top:0px;
     transform: rotate(-12deg);
+  }
+  .section h2 {
+    margin-top: 4rem;
   }
 }
 
@@ -1490,12 +1493,12 @@ footer {
 
   .curriculum-text {
     max-width: 100%;
-    text-align: center;
+    text-align: justify;
   }
 
   .curriculum-text p {
     padding-left: 0;
-    text-align: center;
+    text-align: justify;
   }
 
   .curriculum-sticker {
@@ -1710,7 +1713,7 @@ footer {
   }
 
   .spiral {
-    width: 80px;            /* Smaller spirals so they fit next to the text */
+    width: 60px;            /* Smaller spirals so they fit next to the text */
     height: auto;
     flex-shrink: 0;
   }
