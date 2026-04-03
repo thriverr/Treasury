@@ -669,7 +669,11 @@ footer {
   font-weight: 500;
   color: #222;
 }
-
+.card-hint {
+  font-size: clamp(11px, 2.2vw, 14px);
+  margin-top: clamp(14px, 3vw, 24px);
+  opacity: 0.9;
+}
 .program-back {
   transform: rotateY(180deg);
   font-size: clamp(0.9rem, 1.1vw, 1rem);
@@ -1698,7 +1702,7 @@ footer {
     font-size: 4rem;      /* Adjusted so text doesn't overflow screen */
     white-space: nowrap;    /* FORCES the text to stay on one single line */
     gap: 10px;              /* Reduces gap between spirals and text */
-    padding: 10px 10px 50px 10px;;             /* Removes extra padding that was squeezing the text */
+    padding: 0px 0px 50px 0px;;             /* Removes extra padding that was squeezing the text */
     
     display: inline-flex;
     align-items: center;
