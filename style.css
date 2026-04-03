@@ -1491,6 +1491,7 @@ footer {
 
   .curriculum-text p {
     padding-left: 0;
+    text-align: center;
   }
 
   .curriculum-sticker {
@@ -1824,47 +1825,78 @@ margin-top: 4rem;
   flex-shrink: 0;
 }
 
+/* --- UPDATED AND CLEANED MEDIA QUERIES --- */
+
 @media (max-width: 1024px) {
   .vision, .mission {
     margin-left: auto;
-    margin-right: auto; /* Center cards on tablets */
+    margin-right: auto;
+    /* Center cards on tablets */
   }
+  
   .owl { 
-    left: -13%;
-    width: 65%;          /* Scalable width */
-    max-width: 650px;
-    transform: rotate(-10deg);
-   } /* Tuck them in slightly so they don't cover text */
-  .bear { right: -15%; }
+    left: 0%;            /* Tuck it IN from the left edge slightly */
+    top: 220px;           /* Adjust position as needed */
+    width: 39%;          /* Scalable width */
+    transform: rotate(-3deg);
+    /* Revert rotate back to positive or adjust as needed */
+  } 
+
+  .bear { 
+    right: -6%;           /* Tuck it IN from the right edge slightly */
+     /* Adjust position as needed */
+    width: 30%;          /* Scalable width */
+    transform: rotate(5deg);
+  }
 }
 
 @media (max-width: 768px) {
   .cards-container {
-    padding: 20px 10px; /* Space for characters at top/bottom */
+    padding: 20px 10px;
+    gap: 30px; /* Slightly tighter gaps for smaller screens */
   }
   
   .cardd {
     width: 95%;
-    border-radius: 60px; /* Better text flow for vertical screens */
-    padding: 40px 20px;
+    border-radius: 60px;
+    padding: 30px 20px;
   }
 
-  /* 2. SHOW and STYLE the new rectangular image for mobile */
+  .cardd h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+
+  .cardd p,
+  .mission-points li {
+    font-size: 15px; /* Slightly smaller text for better readability on phones */
+  }
+
+  /* SHOW and STYLE the new rectangular image for mobile */
   .mission-vision-banner {
-    display: block;      /* Makes the image visible on mobile */
-    width: 100%;         /* Fits the full width of the mobile screen */
-    height: auto;        /* Maintains the correct aspect ratio */
-    margin-top: 20px; /* Space between the new image and the cards */
-    max-width: 500px;    /* Optional: prevents the image from getting too massive on small laptops */
-             /* Keeps it above other elements */
+    display: block;
+    width: 90%;          /* Fits nicely, with some edge padding */
+    height: auto;
+    margin: 20px auto;    /* Centers and gives space */
+    max-width: 400px;
+    border-radius: 20px; /* Looks friendlier with rounded corners */
+  }
+
+  /* Character positioning for very small mobile (Phones) */
+  .owl { 
+    width: 180px;        /* Fixed max size for phone screens */
+    left: -20px;         /* Anchored from the left */
+    top: 90px;
+    transform: rotate(-8deg);
   }
 
   .bear {
-    width: 200px;
-    bottom: -1%;
+    width: 150px;        /* Fixed max size for phone screens */
+    right: -45px;        /* Anchored from the right */
+    bottom: 7px;
+    transform: rotate(5deg);
   }
 }
-
 /* DAYCARE SECTION */
 .daycare-section {
   padding: 60px 20px;
