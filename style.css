@@ -63,7 +63,7 @@ body {
   width: 50px;
   height: 50px;
   object-fit: contain;
-  border: 2px solid #5D4037;
+  border-radius: 50%;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .logo img:hover {
@@ -1498,7 +1498,7 @@ footer {
 
   .curriculum-text p {
     padding-left: 0;
-    text-align: justify;
+    text-align: center;
   }
 
   .curriculum-sticker {
