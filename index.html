@@ -8,13 +8,14 @@
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="images/TOJLogo.webp">
 </head>
 
 <body>
 
   <!-- Navbar -->
   <nav class="navbar">
-    <div class="logo"><img src="images/TOJLogo.png"> <strong>TOJ</strong></div>
+    <div class="logo"><img src="images/TOJLogo.webp" loading="eager" fetchpriority="high"> <strong>TOJ</strong></div>
     <ul class="nav-links">
       <li><a href="#home">Home</a></li>
       <li><a href="daycare.html">Daycare</a></li>
@@ -30,7 +31,7 @@
   <!-- Hero Section -->
   <section id="home" class="hero">
     <div class="hero-text">
-      <img src="images/TOJLogo.png" alt="logo" />
+      <img src="images/TOJLogo.webp" loading="eager" fetchpriority="high" alt="logo" />
       <h1>Treasury of Joy</h1>
       <p class="headline">
         A treasure house of learning and joy in every step
@@ -38,7 +39,7 @@
       <button class="primary-btn" id="enrollBtn">Enroll Now</button>
     </div>
     <div class="hero-image">
-      <video autoplay muted loop playsinline>
+      <video autoplay muted loop playsinline preload="none" poster="images/vidplaceholder.webp">
         <source src="videos/playschool.mp4" type="video/mp4">
         Your browser does not support the video tag.
       </video>
@@ -48,12 +49,12 @@
   <!-- About Section -->
   <section id="about" class="about-section">
     <div class="about-cloud">
-      <img src="images/brownbunny.png" class="about-sticker" alt="">
-      <img src="images/readingbunny.png" class="about-sticker-right" alt="">
+      <img src="images/brownbunny.webp" loading="lazy" class="about-sticker" alt="">
+      <img src="images/readingbunny.webp" loading="lazy" class="about-sticker-right" alt="">
       <h2>About Our Little Haven</h2>
       <p>
         At Treasury of Joy, we believe every child is a unique treasure.
-We offer a warm, secure daycare facility where children feel at home, while our nurturing environment fosters curiosity, creativity, and confidence through play-based and structured learning.
+We also offer a warm, secure daycare facility where children feel at home, while our nurturing environment fosters curiosity, creativity, and confidence through play-based and structured learning.
       </p>
     </div>
   </section>
@@ -63,8 +64,8 @@ We offer a warm, secure daycare facility where children feel at home, while our 
   <section id="programs" class="section programs-section">
     <div class="programs-bg-card">
     <h2>Our Enriching Programs</h2>    
-    <img src="images/rainbow.png" class="sticker sticker-left" alt="Sticker">
-    <img src="images/pen.png" class="sticker sticker-right" alt="Sticker">
+    <img src="images/rainbow.png" loading="lazy" class="sticker sticker-left" alt="Sticker">
+    <img src="images/pen.png" loading="lazy" class="sticker sticker-right" alt="Sticker">
     <div class="programs-container">
       <div class="program-card peach-card">
         <div class="program-inner">
@@ -72,7 +73,7 @@ We offer a warm, secure daycare facility where children feel at home, while our 
           <div class="program-front">
             <div class="blob blob-blue"></div>
             <div class="icon">
-              <img src="images/preplay.png" alt="Play Group" />
+              <img src="images/preplay.webp" loading="lazy" alt="Play Group" />
             </div>
             <h3>Little Sprouts (Ages 2-3)</h3>
             <p class="card-hint"><u>Tap to explore</u></p>
@@ -91,7 +92,7 @@ We offer a warm, secure daycare facility where children feel at home, while our 
           <div class="program-front">
             <div class="blob blob-pink"></div>
             <div class="icon">
-              <img src="images/playgroup.png" alt="Play Group" />
+              <img src="images/playgroup.webp" loading="lazy" alt="Play Group" />
             </div>
             <h3>Discovery Stars (Ages 3-4)</h3>
             <p class="card-hint"><u>Tap to explore</u></p>
@@ -110,7 +111,7 @@ We offer a warm, secure daycare facility where children feel at home, while our 
           <div class="program-front">
             <div class="blob blob-brown"></div>
             <div class="icon">
-              <img src="images/kindergarten.png" alt="Kindergarten" />
+              <img src="images/kindergarten.webp" loading="lazy" alt="Kindergarten" />
             </div>
             <h3>Happy Learners (Ages 4-5)</h3>
             <p class="card-hint"><u>Tap to explore</u></p>
@@ -127,7 +128,7 @@ We offer a warm, secure daycare facility where children feel at home, while our 
           <div class="program-front">
             <div class="blob blob-green"></div>
             <div class="icon">
-              <img src="images/leaders.png" alt="Play Group" />
+              <img src="images/leaders.webp" loading="lazy" alt="Play Group" />
             </div>
             <h3>Future Leaders (Ages 5-6)</h3>
             <p class="card-hint"><u>Tap to explore</u></p>
@@ -148,7 +149,7 @@ We offer a warm, secure daycare facility where children feel at home, while our 
   <!-- Activities -->
   <section id="activities" class="section activities-section">
     <h2>Daily Adventures Await</h2>
-    <img src="images/sun.png" class="sticker-sun" alt="Sticker">
+    <img src="images/sun.png" loading="lazy" class="sticker-sun" alt="Sticker">
     <p class="activities-subtitle">
       Every day is filled with joyful learning, creativity, and fun-filled moments.
     </p>
@@ -158,7 +159,7 @@ We offer a warm, secure daycare facility where children feel at home, while our 
       <div class="activity-card">
         <img
           src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExemF0ZTBqYzRmZGdremhzbzdrMms0NTR0eTFqbTFianRpZHU0d2lhNyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/xUPGcg0k07shT4W9Fu/giphy.gif"
-          alt="Creative Art">
+          loading="lazy" alt="Creative Art">
         <h3>Creative Art</h3>
         <p>Painting, coloring, and crafting to spark imagination.</p>
       </div>
@@ -167,7 +168,7 @@ We offer a warm, secure daycare facility where children feel at home, while our 
       <div class="activity-card">
         <img
           src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExaHZsb2h1MHd4Znk0a3I4eHlmN2cyMWxrOGFsOHNwZzF0dWt6bmlzNyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/MjoX6aSQlt7c3bSTmk/giphy.gif"
-          alt="Music and Movement">
+          loading="lazy" alt="Music and Movement">
         <h3>Music & Movement</h3>
         <p>Dancing, singing, and rhythm-based fun.</p>
       </div>
@@ -176,7 +177,7 @@ We offer a warm, secure daycare facility where children feel at home, while our 
       <div class="activity-card">
         <img
           src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExdG84MWhpazZnZzVjZW0ycjdpNXNkOGJ3MjRvOXZpajM3djk1OWhxMyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/eU2nExJtCEBuD1jDmm/giphy.gif"
-          alt="Story Time">
+          loading="lazy" alt="Story Time">
         <h3>Story Time</h3>
         <p>Listening, imagining, and learning through stories.</p>
       </div>
@@ -249,8 +250,8 @@ We offer a warm, secure daycare facility where children feel at home, while our 
         </div>
       </li>
     </ul>
-    <img src="images/fox.png" class="sticker sticker-top-left" alt="Sticker">
-    <img src="images/panda.png" class="sticker-big sticker-bottom-right" alt="Sticker">
+    <img src="images/fox.png" loading="lazy" class="sticker sticker-top-left" alt="Sticker">
+    <img src="images/panda.png" loading="lazy" class="sticker-big sticker-bottom-right" alt="Sticker">
 
   </section>
 
@@ -266,7 +267,7 @@ We offer a warm, secure daycare facility where children feel at home, while our 
       <div class="cards" id="cards">
   
         <div class="card peach">
-          <img src="images/cctv.png" alt="CCTV Surveillance" />
+          <img src="images/cctv.webp" alt="CCTV Surveillance" />
           <h3>Safe & Secure Environment</h3>
           <p>
             CCTV surveillance across all areas ensures safety and security, with monitored systems maintained by the school.
@@ -274,7 +275,7 @@ We offer a warm, secure daycare facility where children feel at home, while our 
         </div>
   
         <div class="card green">
-          <img src="images/sanitization.png" alt="sanitization" />
+          <img src="images/sanitization.webp" alt="sanitization" />
           <h3>Clean & Hygienic Spaces</h3>
           <p>
             Daily sanitization of classrooms, toys, and surfaces keeps
@@ -283,7 +284,7 @@ We offer a warm, secure daycare facility where children feel at home, while our 
         </div>
   
         <div class="card blue">
-          <img src="images/trained.png" alt="trained" />
+          <img src="images/trained.webp" alt="trained" />
           <h3>Certified Caregivers</h3>
           <p>
             Our staff is trained in child safety, first aid, and emergency
@@ -292,7 +293,7 @@ We offer a warm, secure daycare facility where children feel at home, while our 
         </div>
   
         <div class="card yellow">
-          <img src="images/safety.png" alt="safety " />
+          <img src="images/safety.webp" alt="safety " />
           <h3>Routine Safety Checks</h3>
           <p>
             Regular safety audits help us maintain secure infrastructure
@@ -301,7 +302,7 @@ We offer a warm, secure daycare facility where children feel at home, while our 
         </div>
   
         <div class="card lavender">
-          <img src="images/pickup.png" alt="Pickup" />
+          <img src="images/pickup.webp" alt="Pickup" />
           <h3>Secure Entry & Pickup</h3>
           <p>
             Controlled access systems ensure children are handed over
@@ -317,14 +318,14 @@ We offer a warm, secure daycare facility where children feel at home, while our 
     <!-- FAQ -->
     <section id="FAQ" class="section faq-container">
       <div class="faq-header">
-          <img src="images/sun2.png" alt="Sun Left" class="sun sun-left">
-          <img src="images/cloud.png" alt="Cloud" class="cloud-left">
+          <img src="images/sun2.png" loading="lazy"alt="Sun Left" class="sun sun-left">
+          <img src="images/cloud.png" loading="lazy" alt="Cloud" class="cloud-left">
         <h1 class="bubbly-title">
           <span>Q</span><span>U</span><span>E</span><span>S</span><span>T</span><span>I</span><span>O</span><span>N</span><span>S</span><span>?</span>
         </h1>
         <p class="subtitle">We've Got Answers!</p>
-        <img src="images/sun2.png" alt="Sun Left" class="sun sun-right">
-        <img src="images/cloud.png" alt="Cloud" class="cloud-right">
+        <img src="images/sun2.png" loading="lazy" alt="Sun Left" class="sun sun-right">
+        <img src="images/cloud.png" loading="lazy" alt="Cloud" class="cloud-right">
       </div>
     
       <div class="faq-grid">
@@ -418,7 +419,7 @@ We offer a warm, secure daycare facility where children feel at home, while our 
       <!-- Details Box -->
       <div class="journey-card">
         <h3>Our Details</h3>
-        <img src="images/phone.png" class="sticker-phone" alt="Sticker">
+        <img src="images/phone.png" loading="lazy" class="sticker-phone" alt="Sticker">
         <div class="details">
           <p>📞 <strong>Phone:</strong> +91 8447921331, 7838313351 </p>
           <p>✉️ <strong>Email:</strong> treasuryofjoy@gmail.com</p>
